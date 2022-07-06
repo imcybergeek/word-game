@@ -26,7 +26,8 @@ function App() {
   }
   const getUserInput = (e) => {
     if (e.key === 'Enter') {
-      e.target.value.includes(currQ) && wordsList.includes(e.target.value) && setScore(score + 1)
+      const userValue = e.target.value.toLowerCase().trim()
+      userValue.includes(currQ) && wordsList.includes(userValue) && setScore(score + 1)
       setCurrQ(getNewQuestion)
     }
   }
