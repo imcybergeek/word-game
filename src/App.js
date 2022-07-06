@@ -14,14 +14,15 @@ line-height: 46px;
 font-size: 1.1em;
 border-radius: 30px;
 padding: 10px 20px;
+margin: 20px;
 box-sizing: border-box;
 text-align: center;
 `;
 
 const Button = styled.button`
     color: rgb(232, 230, 227);
-    height: 46px;
-    padding: 10px 26px;
+    height: 2em;
+    padding: 0px 1em;
     border: none;
     background: linear-gradient(
       to right,
@@ -29,12 +30,20 @@ const Button = styled.button`
       rgba(1, 144, 182, 1) 100%
     );
     border-radius: 30px;
-    font-size: 1.1em;
+    font-size: 1em;
+    margin: 25px;
   `;
 
-
-const Health = styled.div`
-padding-top:30px;
+const Stats = styled.div`
+div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 10px;
+}
+p{
+  color: grey;
+}
 `
 
 const Img = styled.img`
@@ -56,12 +65,11 @@ function App() {
     if (e.key === 'Enter') {
       const userValue = e.target.value.toLowerCase().trim()
       e.target.value = null
-      if (userValue.includes(currQ) && wordsList.includes(userValue)) 
-      {
-        setScore(score + 1); 
+      if (userValue.includes(currQ) && wordsList.includes(userValue)) {
+        setScore(score + 1);
         childRef.current.reset();
         setCurrQ(getNewQuestion);
-    }
+      }
     }
   }
 
@@ -76,15 +84,22 @@ function App() {
 
   return <div className="App">
     {health ? <>
-      <Timer nextQuestion={nextQuestion} reduceHealth={reduceHealth} ref={childRef} />
-      <p>Type a word that contains <br /> <b>{currQ}</b></p>
+        <p>Type a word that contains</p>
+        <h2>{currQ}</h2>
       <Input type="text" onKeyDown={getUserInput} autoFocus />
-      <Health>
-        {[...Array(health)].map(() => <Img src={heart} alt="❤" />)}
-      </Health>
-      <p>Score: {score}</p>
+      <Stats>
+        <div>
+          <p>Time Left</p>
+        <Timer nextQuestion={nextQuestion} reduceHealth={reduceHealth} ref={childRef} />
+        </div>
+          {[...Array(health)].map(() => <Img src={heart} alt="❤" />)}
+          <div>
+            <p>Score</p>
+          <h3>{score}</h3>
+          </div>
+      </Stats>
     </> : <>
-      <h1>Your Final Score is: {score}</h1>
+      <h1>Your Final Score is {score}</h1>
       <Button onClick={replay}>Replay</Button>
     </>}
   </div>

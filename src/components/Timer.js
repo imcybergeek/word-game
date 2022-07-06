@@ -26,7 +26,7 @@ const Timer = forwardRef(({ nextQuestion, reduceHealth }, ref) => {
         return () => clearInterval(interval);
     }, [seconds]);
 
-    return <>Time left: {seconds}s</>
+    return <>{seconds}s</>
 });
 
 export default Timer;
