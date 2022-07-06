@@ -64,6 +64,11 @@ function App() {
     }
     }
   }
+
+  const replay = () => {
+    setScore(0)
+    setHealth(3)
+  }
   const [health, setHealth] = useState(3)
   const childRef = useRef();
   const [currQ, setCurrQ] = useState(getNewQuestion)
@@ -79,8 +84,8 @@ function App() {
       </Health>
       <p>Score: {score}</p>
     </> : <>
-      <h1>Your Score is: {score}</h1>
-      <Button onClick={() => setHealth(3)}>Replay</Button>
+      <h1>Your Final Score is: {score}</h1>
+      <Button onClick={replay}>Replay</Button>
     </>}
   </div>
 }
