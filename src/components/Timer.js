@@ -1,6 +1,6 @@
 import { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
 
-const timeToAnswer = 5
+const timeToAnswer = 10
 const Timer = forwardRef(({ nextQuestion, reduceHealth }, ref) => {
     const [seconds, setSeconds] = useState(timeToAnswer);
 
