@@ -99,7 +99,8 @@ function App() {
           </div>
       </Stats>
     </> : <>
-      <h1>Your Final Score is {score}</h1>
+      <h1>Your Final Score is</h1>
+      <h1>{score}</h1>
       <Button onClick={replay}>Replay</Button>
     </>}
   </div>
